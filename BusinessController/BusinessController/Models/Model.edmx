@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MTPESSOA">
+          <Key>
+            <PropertyRef Name="MTPESSOA_ID" />
+          </Key>
+          <Property Name="MTPESSOA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MTPESSOA_NOME" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MTPESSOA_SOBRENOME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MTPESSOA_NASCIMENTO" Type="date" Nullable="false" />
+          <Property Name="MTPESSOA_MAE" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MTPESSOA_CPF" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="MTPESSOA_RG" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="MTPESSOA_CEL" Type="varchar" MaxLength="17" Nullable="false" />
+          <Property Name="MTPESSOA_TEL" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="MTPRODUTO">
+          <Key>
+            <PropertyRef Name="MTPRODUTO_ID" />
+          </Key>
+          <Property Name="MTPRODUTO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MTPRODUTO_DESCR" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MTPRODUTO_QTDE" Type="int" />
+          <Property Name="MTPRODUTO_VALOR" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MTUSUARIO">
+          <Key>
+            <PropertyRef Name="ID_LOGIN" />
+          </Key>
+          <Property Name="ID_LOGIN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="150" />
+          <Property Name="SENHA" Type="varchar" MaxLength="18" />
+          <Property Name="ATIVO" Type="char" MaxLength="1" />
+          <Property Name="PERFIL" Type="varchar" MaxLength="15" />
+          <Property Name="NOME" Type="varchar" MaxLength="50" />
+          <Property Name="SOBRENOME" Type="varchar" MaxLength="50" />
+          <Property Name="IDPESSOA" Type="int" />
+        </EntityType>
+        <Association Name="FK_MTPESSOA">
+          <End Role="MTPESSOA" Type="Self.MTPESSOA" Multiplicity="0..1" />
+          <End Role="MTUSUARIO" Type="Self.MTUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MTPESSOA">
+              <PropertyRef Name="MTPESSOA_ID" />
+            </Principal>
+            <Dependent Role="MTUSUARIO">
+              <PropertyRef Name="IDPESSOA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="MTPESSOA" EntityType="Self.MTPESSOA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MTPRODUTO" EntityType="Self.MTPRODUTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MTUSUARIO" EntityType="Self.MTUSUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MTPESSOA" Association="Self.FK_MTPESSOA">
+            <End Role="MTPESSOA" EntitySet="MTPESSOA" />
+            <End Role="MTUSUARIO" EntitySet="MTUSUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MTPESSOA">
+          <Key>
+            <PropertyRef Name="MTPESSOA_ID" />
+          </Key>
+          <Property Name="MTPESSOA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MTPESSOA_NOME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MTPESSOA_SOBRENOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MTPESSOA_NASCIMENTO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MTPESSOA_MAE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MTPESSOA_CPF" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MTPESSOA_RG" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MTPESSOA_CEL" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MTPESSOA_TEL" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MTUSUARIO" Relationship="Model.FK_MTPESSOA" FromRole="MTPESSOA" ToRole="MTUSUARIO" />
+        </EntityType>
+        <EntityType Name="MTPRODUTO">
+          <Key>
+            <PropertyRef Name="MTPRODUTO_ID" />
+          </Key>
+          <Property Name="MTPRODUTO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MTPRODUTO_DESCR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MTPRODUTO_QTDE" Type="Int32" />
+          <Property Name="MTPRODUTO_VALOR" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Matriz" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MTPESSOA" EntityType="Self.MTPESSOA" />
+          <EntitySet Name="MTPRODUTO" EntityType="Self.MTPRODUTO" />
+          <EntitySet Name="MTUSUARIO" EntityType="Model.MTUSUARIO" />
+          <AssociationSet Name="FK_MTPESSOA" Association="Model.FK_MTPESSOA">
+            <End Role="MTPESSOA" EntitySet="MTPESSOA" />
+            <End Role="MTUSUARIO" EntitySet="MTUSUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MTUSUARIO">
+          <Key>
+            <PropertyRef Name="ID_LOGIN" />
+          </Key>
+          <Property Name="ID_LOGIN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SENHA" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="ATIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PERFIL" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SOBRENOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPESSOA" Type="Int32" />
+          <NavigationProperty Name="MTPESSOA" Relationship="Model.FK_MTPESSOA" FromRole="MTUSUARIO" ToRole="MTPESSOA" />
+        </EntityType>
+        <Association Name="FK_MTPESSOA">
+          <End Type="Model.MTPESSOA" Role="MTPESSOA" Multiplicity="0..1" />
+          <End Type="Model.MTUSUARIO" Role="MTUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MTPESSOA">
+              <PropertyRef Name="MTPESSOA_ID" />
+            </Principal>
+            <Dependent Role="MTUSUARIO">
+              <PropertyRef Name="IDPESSOA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Matriz">
+          <EntitySetMapping Name="MTPESSOA">
+            <EntityTypeMapping TypeName="Model.MTPESSOA">
+              <MappingFragment StoreEntitySet="MTPESSOA">
+                <ScalarProperty Name="MTPESSOA_ID" ColumnName="MTPESSOA_ID" />
+                <ScalarProperty Name="MTPESSOA_NOME" ColumnName="MTPESSOA_NOME" />
+                <ScalarProperty Name="MTPESSOA_SOBRENOME" ColumnName="MTPESSOA_SOBRENOME" />
+                <ScalarProperty Name="MTPESSOA_NASCIMENTO" ColumnName="MTPESSOA_NASCIMENTO" />
+                <ScalarProperty Name="MTPESSOA_MAE" ColumnName="MTPESSOA_MAE" />
+                <ScalarProperty Name="MTPESSOA_CPF" ColumnName="MTPESSOA_CPF" />
+                <ScalarProperty Name="MTPESSOA_RG" ColumnName="MTPESSOA_RG" />
+                <ScalarProperty Name="MTPESSOA_CEL" ColumnName="MTPESSOA_CEL" />
+                <ScalarProperty Name="MTPESSOA_TEL" ColumnName="MTPESSOA_TEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MTPRODUTO">
+            <EntityTypeMapping TypeName="Model.MTPRODUTO">
+              <MappingFragment StoreEntitySet="MTPRODUTO">
+                <ScalarProperty Name="MTPRODUTO_ID" ColumnName="MTPRODUTO_ID" />
+                <ScalarProperty Name="MTPRODUTO_DESCR" ColumnName="MTPRODUTO_DESCR" />
+                <ScalarProperty Name="MTPRODUTO_QTDE" ColumnName="MTPRODUTO_QTDE" />
+                <ScalarProperty Name="MTPRODUTO_VALOR" ColumnName="MTPRODUTO_VALOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MTUSUARIO">
+            <EntityTypeMapping TypeName="Model.MTUSUARIO">
+              <MappingFragment StoreEntitySet="MTUSUARIO">
+                <ScalarProperty Name="IDPESSOA" ColumnName="IDPESSOA" />
+                <ScalarProperty Name="SOBRENOME" ColumnName="SOBRENOME" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="PERFIL" ColumnName="PERFIL" />
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
+                <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ID_LOGIN" ColumnName="ID_LOGIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BusinessController.Models.MTUSUARIO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SENHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATIVO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERFIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOBRENOME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MTPESSOA.MTPESSOA_NOME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SENHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATIVO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERFIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOBRENOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MTPESSOA.MTPESSOA_NOME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_LOGIN }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_LOGIN }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_LOGIN })
+        </td>
+    </tr>
+}
+
+</table>
