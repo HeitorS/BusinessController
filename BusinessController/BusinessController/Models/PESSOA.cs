@@ -12,25 +12,26 @@ namespace BusinessController.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MTPESSOA
+    public partial class PESSOA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MTPESSOA()
+        public PESSOA()
         {
-            this.MTUSUARIO = new HashSet<MTUSUARIO>();
+            this.USUARIO = new HashSet<USUARIO>();
         }
     
-        public int MTPESSOA_ID { get; set; }
-        public string MTPESSOA_NOME { get; set; }
-        public string MTPESSOA_SOBRENOME { get; set; }
-        public System.DateTime MTPESSOA_NASCIMENTO { get; set; }
-        public string MTPESSOA_MAE { get; set; }
-        public string MTPESSOA_CPF { get; set; }
-        public string MTPESSOA_RG { get; set; }
-        public string MTPESSOA_CEL { get; set; }
-        public string MTPESSOA_TEL { get; set; }
+        public int ID { get; set; }
+        public string NOME { get; set; }
+        public string SOBRENOME { get; set; }
+        public string EMAIL { get; set; }
+        public System.DateTime NASCIMENTO { get; set; }
+        public string MAE { get; set; }
+        public string CPF { get; set; }
+        public string RG { get; set; }
+        public string CEL { get; set; }
+        public string TEL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MTUSUARIO> MTUSUARIO { get; set; }
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

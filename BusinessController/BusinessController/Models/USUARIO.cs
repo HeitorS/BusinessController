@@ -12,11 +12,14 @@ namespace BusinessController.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MTPRODUTO
+    public partial class USUARIO
     {
-        public int MTPRODUTO_ID { get; set; }
-        public string MTPRODUTO_DESCR { get; set; }
-        public Nullable<int> MTPRODUTO_QTDE { get; set; }
-        public double MTPRODUTO_VALOR { get; set; }
+        public int ID { get; set; }
+        public string EMAIL { get; set; }
+        public string SENHA { get; set; }
+        public string ATIVO { get; set; }
+        public Nullable<int> IDPESSOA { get; set; }
+    
+        public virtual PESSOA PESSOA { get; set; }
     }
 }

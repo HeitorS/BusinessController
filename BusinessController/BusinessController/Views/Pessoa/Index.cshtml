@@ -1,0 +1,125 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <a data-toggle="collapse" href="#collapse0">Cadastro</a>
+                </h4>
+            </div>
+            <div id="collapse0" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Nome")</label>
+                                        <div>
+                                            <input id="FIRSTNAME" name="FIRSTNAME" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="150">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Sobrenome")</label>
+                                        <div>
+                                            <input id="LASTNAME" name="LASTNAME" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="50">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("E-mail")</label>
+                                        <div>
+                                            <input id="EMAIL" name="EMAIL" type="email" class="form-control" aria-describedby="basic-addon1" maxlength="150">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Data de Nascimento")</label>
+                                        <div>
+                                            <input id="NASCIMENTO" name="NASCIMENTO" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="10">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Nome da Mãe")</label>
+                                        <div>
+                                            <input id="MAE" name="MAE" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="150">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("CPF")</label>
+                                        <div>
+                                            <input id="CPF" name="CPF" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="14">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("RG")</label>
+                                        <div>
+                                            <input id="RG" name="RG" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="12">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Celular")</label>
+                                        <div>
+                                            <input id="CELULAR" name="CELULAR" type="tel" class="form-control" aria-describedby="basic-addon1" maxlength="15">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Telefone")</label>
+                                        <div>
+                                            <input id="TELEFONE" name="TELEFONE" type="tel" class="form-control" aria-describedby="basic-addon1" maxlength="14">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <input type="button" class="btn btn-primary" value="Cadastrar" style="margin-left: -5px;"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $('#btn_save').click(function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Gravar")',
+            data: {nome: $('#Nome').val()},
+            success: function () {
+
+            },
+            complete: function () {
+
+            }
+        });
+    });
+</script>

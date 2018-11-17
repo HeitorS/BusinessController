@@ -25,8 +25,7 @@ namespace BusinessController.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<MTPESSOA> MTPESSOA { get; set; }
-        public virtual DbSet<MTPRODUTO> MTPRODUTO { get; set; }
-        public virtual DbSet<MTUSUARIO> MTUSUARIO { get; set; }
+        public virtual DbSet<PESSOA> PESSOA { get; set; }
+        public virtual DbSet<USUARIO> USUARIO { get; set; }
     }
 }
