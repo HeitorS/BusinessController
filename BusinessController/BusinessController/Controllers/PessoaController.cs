@@ -55,8 +55,11 @@ namespace BusinessController.Controllers
                     findPessoa = context.Pessoas.Where(p => p.RG == rg).FirstOrDefault();
                     if (findPessoa != null)
                         return Json(new { type = "warning", message = "Esse RG já foi cadastrado!" }, JsonRequestBehavior.AllowGet);
+
+                    context.Pessoas.Add(pessoa);
+                    context.SaveChanges();
+                    return Json(new { type = "success", message = "Dados Gravados com Sucesso!"}, JsonRequestBehavior.AllowGet);
                 }
-                return Json(new { type = "success", message = "Dados Gravados com Sucesso!"}, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
             {
