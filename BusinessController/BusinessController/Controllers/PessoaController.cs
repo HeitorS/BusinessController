@@ -16,19 +16,45 @@ namespace BusinessController.Controllers
             return View();
         }
 
-        public JsonResult Gravar(string nome, string email)
+        public JsonResult Gravar(
+            string firstName, 
+            string lastName,
+            string email,
+            string nascimento,
+            string mae,
+            string cpf,
+            string rg,
+            string telefone,
+            string celular )
         {
             try
             {
+                PESSOA pessoa = new PESSOA();
+                PESSOA findPessoa = new PESSOA();
+
+                pessoa.NOME = firstName;
+                pessoa.SOBRENOME = lastName;
+                pessoa.EMAIL = email;
+                pessoa.NASCIMENTO = GlobalHelper.Converter(pessoa.NASCIMENTO, nascimento);
+                pessoa.MAE = mae;
+                pessoa.CPF = cpf;
+                pessoa.RG = rg;
+                pessoa.TEL = telefone;
+                pessoa.CEL = celular;
+
                 using (DataContext context = new DataContext())
                 {
-                    PESSOA pessoa = new PESSOA();
-                    if(email != "")
-                    {
-                        var a = context.Usuarios.Where<USUARIO>(x => x.EMAIL == email);
-                    }
+                    findPessoa = context.Pessoas.Where(p => p.EMAIL == email).FirstOrDefault();
+                    if(findPessoa != null)
+                        return Json(new { type = "warning", message = "Esse e-mail já foi cadastrado!" }, JsonRequestBehavior.AllowGet);
 
-                    //context.SaveChanges();
+                    findPessoa = context.Pessoas.Where(p => p.CPF == cpf).FirstOrDefault();
+                    if (findPessoa != null)
+                        return Json(new { type = "warning", message = "Esse CPF já foi cadastrado!" }, JsonRequestBehavior.AllowGet);
+
+                    findPessoa = context.Pessoas.Where(p => p.RG == rg).FirstOrDefault();
+                    if (findPessoa != null)
+                        return Json(new { type = "warning", message = "Esse RG já foi cadastrado!" }, JsonRequestBehavior.AllowGet);
                 }
                 return Json(new { type = "success", message = "Dados Gravados com Sucesso!"}, JsonRequestBehavior.AllowGet);
             }
