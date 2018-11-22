@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div class="container" id="validaBody">
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -24,7 +24,7 @@
                                     <div class="form-group">
                                         <label class="control-label" for="textinput">@Html.Label("Sobrenome")</label>
                                         <div>
-                                            <input id="LASTNAME" name="LASTNAME" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="50">
+                                            <input id="LASTNAME" name="LASTNAME" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="20">
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                    <input type="button" class="btn btn-primary" value="Cadastrar" style="margin-left: -5px;"/>
+                                    <input id="btn_save" name="btn_save" type="button" class="btn btn-primary" value="Cadastrar" style="margin-left: -5px;" />
                                 </div>
                             </div>
                         </fieldset>
@@ -106,20 +106,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    @Scripts.Render("~/Scripts/Areas/Login/Index.js")
 }
-
-<script>
-    $('#btn_save').click(function () {
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("Gravar")',
-            data: {nome: $('#Nome').val()},
-            success: function () {
-
-            },
-            complete: function () {
-
-            }
-        });
-    });
-</script>
