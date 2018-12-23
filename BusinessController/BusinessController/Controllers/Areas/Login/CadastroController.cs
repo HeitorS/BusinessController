@@ -8,12 +8,12 @@ using System;
 
 namespace BusinessController.Controllers
 {
-    public class PessoaController : Controller
+    public class CadastroController : Controller
     {
         // GET: Pessoa
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/Login/Cadastro.cshtml");
         }
 
         public JsonResult Gravar(

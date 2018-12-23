@@ -1,0 +1,79 @@
+﻿<script>
+    var dirLogar = '@Url.Action("Logar")';
+    var dirTrocar = '@Url.Action("TrocarSenha")';
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <a data-toggle="collapse" href="#collapse0">Login</a>
+                    </h4>
+                </div>
+                <div id="collapse0" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Senha")</label>
+                                        <div>
+                                            <input id="USUARIO" name="USUARIO" type="email" class="form-control" aria-describedby="basic-addon1" maxlength="150">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">@Html.Label("Confirmar Senha")</label>
+                                        <div>
+                                            <input id="SENHA" name="SENHA" type="password" class="form-control" aria-describedby="basic-addon1" maxlength="20">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <input id="btn_logar" name="btn_logar" type="button" class="btn btn-info" value="Logar" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="trocaSenha" tabindex="-1" role="dialog" aria-labelledby="trocaSenhaLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="trocaSenhaLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="senha" class="control-label">@Html.Label("")</label>
+                        <input type="password" class="form-control" id="senha">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirma" class="control-label">@Html.Label("Confirmar Senha")</label>
+                        <input type="password" class="form-control" id="confirma">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModal" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button id="btn_msave" type="button" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Areas/Login/Login.js")
+}

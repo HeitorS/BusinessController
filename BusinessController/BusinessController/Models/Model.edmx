@@ -26,7 +26,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EMAIL" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="SENHA" Type="varchar" MaxLength="18" />
+          <Property Name="SENHA" Type="varchar" MaxLength="150" />
           <Property Name="ATIVO" Type="char" MaxLength="1" />
           <Property Name="IDPESSOA" Type="int" />
         </EntityType>
@@ -84,7 +84,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="SENHA" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="SENHA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="ATIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="IDPESSOA" Type="Int32" />
           <NavigationProperty Name="PESSOA" Relationship="Model.FK_PESSOA" FromRole="USUARIO" ToRole="PESSOA" />
